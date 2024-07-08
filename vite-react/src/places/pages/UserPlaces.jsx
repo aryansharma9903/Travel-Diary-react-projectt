@@ -1,6 +1,13 @@
 import React from "react";
+
 // we will return the list of places for that user
 import PlaceList from "../components/PlaceList";
+import { useParams } from "react-router-dom";
+
+//so useparams are used to exrtract the userid of the user from the url and then
+//if i havr an array of objects, so the object with that particular array can be displayed on the 
+//webpage rather than displaying all the array objects
+
 
 const DUMMY_PLACES = [
     {
@@ -30,8 +37,9 @@ const DUMMY_PLACES = [
 ]
   
 const UserPlaces = () => {
-
-    return <PlaceList items={DUMMY_PLACES} />
+    const userId = useParams().userId;
+    const loadedPlaces = DUMMY_PLACES.filter(place => place.creator === userId);
+    return <PlaceList items={loadedPlaces} />
 };
 
 export default UserPlaces;

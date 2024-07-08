@@ -6,7 +6,7 @@ import Newplace from './places/pages/NewPlace';
 import MainNavigation from './shared/components/Navigation/MainNavigation';
 import UserPlaces from './places/pages/UserPlaces';
 
-function App() {
+const App = () => {
 
   return (
     <>
