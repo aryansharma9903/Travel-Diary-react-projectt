@@ -6,6 +6,7 @@ import Button from "../../shared/components/FormElements/Button";
 import {VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH} from '../../shared/components/util/validators'
 import './PlaceForm.css'
 import { useForm } from "../../shared/hooks/form-hook";
+import Card from "../../shared/components/UIElements/Card";
 //importing dummy places
 //as we will fecth these places based om the placeId from backend
 //but for now we will do it for dummyplaces
@@ -30,7 +31,7 @@ const DUMMY_PLACES = [
     },
     {
         id: 'p2',
-        title: 'Empire State Building',
+        title: 'Empire ilding',
         description: 'famouss',
         imageUrl: 'https://www.tripsavvy.com/thmb/sBI2W7YNV4vRSVdbRVfASLH3F6I=/2617x3874/filters:fill(auto,1)/5891665274_cc93622eb7_o-56a3ff3b5f9b58b7d0d4df13.jpg',
         address: '20 West 34th Street, New York City, NY 10001',
@@ -62,16 +63,18 @@ const UpdatePlace = () => {
     const identifiedPlace = DUMMY_PLACES.find(p => p.id === placeId);
 
     useEffect(() => {
-        setFormData({
-            title:{
-                value: identifiedPlace.title,
-                isValid: true
-            },
-            description:{
-                value: identifiedPlace.description,
-                isValid: true
-            }
-        }, true)
+        if(identifiedPlace) {
+            setFormData({
+                title:{
+                    value: identifiedPlace.title,
+                    isValid: true
+                },
+                description:{
+                    value: identifiedPlace.description,
+                    isValid: true
+                }
+            }, true)
+        }
         setIsLoading(false);
     }, [setFormData, identifiedPlace])
     
@@ -84,7 +87,9 @@ const UpdatePlace = () => {
     if(!identifiedPlace){
         return (
             <div className="center">
+                <Card>
                 <h2>Could Not Find Place!</h2>
+                </Card>
             </div>
         )
     }

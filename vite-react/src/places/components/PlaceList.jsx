@@ -1,7 +1,7 @@
 import React from "react";
 import './PlaceList.css'
 import PlaceItem from "./PlaceItem";
-
+import Button from "../../shared/components/FormElements/Button";
 import Card from "../../shared/components/UIElements/Card";
 
 const PlaceList = props => {
@@ -9,7 +9,7 @@ const PlaceList = props => {
         return <div className="place-list center">
             <Card>
                 <h2>No Places Found. Maybe create one?</h2>
-                <button className="">Add new place</button>
+                <Button to='/places/new'>Add new place</Button>
             </Card>
         </div>
     }
